@@ -7,6 +7,7 @@ export default function Calculator() {
   const [equation, setEquation] = useState('');
   const [hasResult, setHasResult] = useState(false);
   const [lastWasOperator, setLastWasOperator] = useState(false);
+  const [isScientific, setIsScientific] = useState(false);
 
   const handleNumber = (number: string) => {
     if (hasResult) {
@@ -40,6 +41,63 @@ export default function Calculator() {
     setHasResult(false);
     setLastWasOperator(true);
     setEquation(equation + ` ${operator} `);
+  };
+
+  const handleScientific = (operation: string) => {
+    if (equation === '') return;
+    
+    try {
+      let result: number;
+      const currentValue = parseFloat(display);
+
+      switch (operation) {
+        case 'sin':
+          result = Math.sin(currentValue * Math.PI / 180);
+          break;
+        case 'cos':
+          result = Math.cos(currentValue * Math.PI / 180);
+          break;
+        case 'tan':
+          result = Math.tan(currentValue * Math.PI / 180);
+          break;
+        case 'sqrt':
+          result = Math.sqrt(currentValue);
+          break;
+        case 'square':
+          result = Math.pow(currentValue, 2);
+          break;
+        case 'cube':
+          result = Math.pow(currentValue, 3);
+          break;
+        case 'log':
+          result = Math.log10(currentValue);
+          break;
+        case 'ln':
+          result = Math.log(currentValue);
+          break;
+        case 'pi':
+          result = Math.PI;
+          break;
+        case 'e':
+          result = Math.E;
+          break;
+        default:
+          return;
+      }
+
+      const formattedResult = Number.isInteger(result) 
+        ? result.toString()
+        : result.toFixed(8).replace(/\.?0+$/, '');
+      
+      setDisplay(formattedResult);
+      setEquation(formattedResult);
+      setHasResult(true);
+      setLastWasOperator(false);
+    } catch (error) {
+      setDisplay('Error');
+      setEquation('');
+      setHasResult(true);
+    }
   };
 
   const calculateResult = (eq: string): number => {
@@ -106,7 +164,17 @@ export default function Calculator() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-3xl shadow-2xl p-8 space-y-6">
+    <div className="w-full max-w-2xl mx-auto bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-3xl shadow-2xl p-8 space-y-6">
+      {/* Mode Toggle */}
+      <div className="flex justify-end">
+        <button
+          onClick={() => setIsScientific(!isScientific)}
+          className="px-4 py-2 text-white bg-black/20 backdrop-blur-sm rounded-xl hover:bg-black/30 transition-all duration-200"
+        >
+          {isScientific ? 'Basic' : 'Scientific'}
+        </button>
+      </div>
+
       {/* Glass effect container */}
       <div className="backdrop-blur-md bg-white/10 rounded-3xl p-8 shadow-inner">
         {/* Display */}
@@ -119,7 +187,73 @@ export default function Calculator() {
           </div>
         </div>
         
-        {/* Buttons Grid */}
+        {/* Scientific Buttons */}
+        {isScientific && (
+          <div className="grid grid-cols-4 gap-3 mb-3">
+            <button
+              onClick={() => handleScientific('sin')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              sin
+            </button>
+            <button
+              onClick={() => handleScientific('cos')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              cos
+            </button>
+            <button
+              onClick={() => handleScientific('tan')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              tan
+            </button>
+            <button
+              onClick={() => handleScientific('sqrt')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              √
+            </button>
+            <button
+              onClick={() => handleScientific('square')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              x²
+            </button>
+            <button
+              onClick={() => handleScientific('cube')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              x³
+            </button>
+            <button
+              onClick={() => handleScientific('log')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              log
+            </button>
+            <button
+              onClick={() => handleScientific('ln')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              ln
+            </button>
+            <button
+              onClick={() => handleScientific('pi')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              π
+            </button>
+            <button
+              onClick={() => handleScientific('e')}
+              className="p-4 text-white bg-indigo-500/50 backdrop-blur-sm rounded-2xl hover:bg-indigo-600/60 transition-all duration-200 shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 font-bold"
+            >
+              e
+            </button>
+          </div>
+        )}
+        
+        {/* Basic Buttons Grid */}
         <div className="grid grid-cols-4 gap-3">
           <button
             onClick={handleClear}
