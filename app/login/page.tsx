@@ -2,18 +2,47 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login attempt:', formData);
+    setError('');
+    setIsLoading(true);
+
+    try {
+      // Here you would typically make an API call to your backend
+      // For demo purposes, we'll simulate a login check
+      if (formData.email && formData.password) {
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Add your actual login API call here
+        // const response = await fetch('/api/login', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(formData)
+        // });
+        
+        // For demo, we'll just redirect to home
+        router.push('/');
+      } else {
+        setError('Please fill in all fields');
+      }
+    } catch (err) {
+      setError('Failed to login. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +65,12 @@ export default function Login() {
           </p>
         </div>
 
+        {error && (
+          <div className="bg-red-500/10 border border-red-500/50 text-red-500 p-3 rounded-xl text-sm">
+            {error}
+          </div>
+        )}
+
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
@@ -52,6 +87,7 @@ export default function Login() {
                 onChange={handleChange}
                 className="w-full px-4 py-2 bg-black/50 border border-[#ff0080]/20 rounded-xl focus:outline-none focus:border-[#ff0080] text-white"
                 placeholder="Enter your email"
+                disabled={isLoading}
               />
             </div>
 
@@ -69,6 +105,7 @@ export default function Login() {
                 onChange={handleChange}
                 className="w-full px-4 py-2 bg-black/50 border border-[#ff0080]/20 rounded-xl focus:outline-none focus:border-[#ff0080] text-white"
                 placeholder="Enter your password"
+                disabled={isLoading}
               />
             </div>
 
@@ -81,6 +118,7 @@ export default function Login() {
                   checked={formData.rememberMe}
                   onChange={handleChange}
                   className="h-4 w-4 rounded-lg border-[#ff0080]/20 bg-black/50 focus:ring-[#ff0080]"
+                  disabled={isLoading}
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-300">
                   Remember me
@@ -97,9 +135,20 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full button-primary rounded-xl"
+            className="w-full button-primary rounded-xl relative"
+            disabled={isLoading}
           >
-            Sign In
+            {isLoading ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Signing in...
+              </span>
+            ) : (
+              'Sign In'
+            )}
           </button>
 
           <div className="text-center text-sm text-gray-300">
