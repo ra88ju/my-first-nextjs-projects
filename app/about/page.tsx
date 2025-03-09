@@ -1,0 +1,155 @@
+'use client';
+
+import { useState } from 'react';
+
+export default function About() {
+  const [showTeam, setShowTeam] = useState(false);
+
+  const teamMembers = [
+    {
+      id: 1,
+      name: 'MD. ROBIN KAKA',
+      role: 'CEO & Founder',
+      specialty: 'Backend Developer',
+      image: '👨‍💻',
+      social: {
+        facebook: 'https://facebook.com/robinkaka',
+        linkedin: 'https://linkedin.com/in/robinkaka'
+      }
+    },
+    {
+      id: 2,
+      name: 'MD. SHAJIB ISLAM',
+      role: 'software developer',
+      specialty: 'Full Stack Developer',
+      image: '👨‍🎨',
+      social: {
+        facebook: 'https://facebook.com/shajibislam',
+        linkedin: 'https://linkedin.com/in/shajibislam'
+      }
+    },
+    {
+      id: 3,
+      name: 'MD. SHAKIL ISLAM',
+      role: 'Tech Lead',
+      specialty: 'Software Engineer',
+      image: '👨‍🔧',
+      social: {
+        facebook: 'https://facebook.com/shakilislam',
+        linkedin: 'https://linkedin.com/in/shakilislam'
+      }
+    }
+  ];
+
+  return (
+    <div className="animate-fade-in">
+      <section className="section">
+        <div className="container">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent animate-gradient text-center">
+            About SolutionBD
+          </h1>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8">
+              We are a team of passionate developers and designers dedicated to creating innovative digital solutions. Our mission is to help businesses transform their ideas into reality through cutting-edge technology and exceptional design.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="card group">
+                <h3 className="text-xl font-semibold bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent mb-4">
+                  Sell Your Idea
+                </h3>
+                <p className="text-gray-300">
+                  To be the leading force in digital innovation, setting new standards in web development and design.
+                </p>
+              </div>
+              
+              <div className="card group">
+                <h3 className="text-xl font-semibold bg-gradient-to-r from-[#7928ca] to-[#0061ff] bg-clip-text text-transparent mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-gray-300">
+                  To empower businesses with cutting-edge digital solutions that drive growth and success.
+                </p>
+              </div>
+            </div>
+
+            <div className="card group">
+              <h3 className="text-2xl font-semibold bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent mb-6 text-center">
+                Our Expertise
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-2">Web Development</h4>
+                  <p className="text-gray-300">Modern, responsive websites built with the latest technologies.</p>
+                </div>
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-2">UI/UX Design</h4>
+                  <p className="text-gray-300">Beautiful, intuitive interfaces that enhance user experience.</p>
+                </div>
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-2">Digital Solutions</h4>
+                  <p className="text-gray-300">Custom software solutions tailored to your business needs.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Meet Our Team Button */}
+            <div className="text-center mt-12">
+              <button
+                onClick={() => setShowTeam(!showTeam)}
+                className="button-primary inline-flex items-center gap-2"
+              >
+                <span>{showTeam ? 'Hide Team' : 'Meet Our Team'}</span>
+                <span className={`transform transition-transform duration-300 ${showTeam ? 'rotate-180' : ''}`}>
+                  ↓
+                </span>
+              </button>
+            </div>
+
+            {/* Team Section */}
+            {showTeam && (
+              <div className="mt-12 animate-fade-in">
+                <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent">
+                  Meet Our Amazing Team
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {teamMembers.map((member) => (
+                    <div
+                      key={member.id}
+                      className="card group text-center transform transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="text-6xl mb-4">{member.image}</div>
+                      <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
+                        {member.name}
+                      </h3>
+                      <p className="text-white mb-1">{member.role}</p>
+                      <p className="text-gray-300 text-sm mb-4">{member.specialty}</p>
+                      <div className="flex justify-center space-x-4">
+                        <a
+                          href={member.social.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-300 hover:text-white transition-colors"
+                        >
+                          Facebook
+                        </a>
+                        <a
+                          href={member.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-300 hover:text-white transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+} 
