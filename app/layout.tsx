@@ -54,7 +54,7 @@ export default function RootLayout({
         <footer className="bg-black/80 backdrop-blur-md border-t border-[#ff0080]/20">
           <div className="max-w-6xl mx-auto px-4 py-6">
             <p className="text-center">
-              © 2024 <span className="bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent font-semibold">SolutionBD</span>. 
+              © 2025 <span className="bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent font-semibold">SolutionBD</span>. 
               All rights reserved.
             </p>
           </div>
