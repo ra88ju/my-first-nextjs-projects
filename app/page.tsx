@@ -505,8 +505,8 @@ export default function Home() {
             Welcome to SolutionBD
           </h1>
           <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#ff0080] to-[#7928ca] mb-8 max-w-2xl mx-auto">
-            Innovative digital solutions built with cutting-edge technology.
-            Transform your ideas into reality today!
+            Do you need any kind of digital solution?
+            Please contact us for any kind of digital solution.
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/about" className="button-primary">
