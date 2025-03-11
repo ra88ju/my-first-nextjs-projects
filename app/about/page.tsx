@@ -50,6 +50,17 @@ export default function About() {
         linkedin: 'https://linkedin.com/in/shajorislam'
       }
     }
+    {
+      id: 5,
+      name: 'MD. Mahabubur Rahman',
+      role: 'Software Developer',
+      specialty: 'Software Developer',
+      image: '👨‍🔧',
+      social: {
+        facebook: 'https://facebook.com/mahabuburrahman',
+        linkedin: 'https://linkedin.com/in/mahabuburrahman'
+      }
+    }
   ];
 
   return (
@@ -101,6 +112,7 @@ export default function About() {
                   <h4 className="text-lg font-semibold mb-2">Digital Solutions</h4>
                   <p className="text-gray-300">Custom software solutions tailored to your business needs.</p>
                 </div>
+                
               </div>
             </div>
 
