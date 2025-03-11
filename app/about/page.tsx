@@ -38,6 +38,17 @@ export default function About() {
         facebook: 'https://facebook.com/shakilislam',
         linkedin: 'https://linkedin.com/in/shakilislam'
       }
+    },
+    {
+      id: 4,
+      name: 'MD. SHAJOR  ISLAM',
+      role: 'Marketing Officer ',
+      specialty: 'Marketing',
+      image: '👨‍🔧',
+      social: {
+        facebook: 'https://facebook.com/shajorislam',
+        linkedin: 'https://linkedin.com/in/shajorislam'
+      }
     }
   ];
 
