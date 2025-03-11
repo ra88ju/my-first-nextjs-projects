@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import './styles/page.css';
 
 interface FeatureDetails {
   id: string;
