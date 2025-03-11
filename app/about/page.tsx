@@ -49,7 +49,7 @@ export default function About() {
         facebook: 'https://facebook.com/shajorislam',
         linkedin: 'https://linkedin.com/in/shajorislam'
       }
-    }
+    },
     {
       id: 5,
       name: 'MD. Mahabubur Rahman',
