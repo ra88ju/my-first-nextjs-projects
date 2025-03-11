@@ -43,13 +43,14 @@ main {
 
 /* Navigation Link Animation */
 .nav-link {
-  @apply relative text-lg font-medium;
+  @apply relative text-lg font-medium inline-block;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   background-size: 200% 100%;
   animation: gradientMove 8s linear infinite;
+  transition: opacity 0.3s ease;
 }
 
 .nav-link::after {
@@ -143,50 +144,13 @@ main {
 }
 
 .button-primary {
-  @apply button;
-  background: var(--primary-gradient);
-  background-size: 200% 100%;
-  animation: gradientMove 4s linear infinite;
-  color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.button-primary:hover {
-  transform: translateY(-2px);
-  animation: gradientMove 2s linear infinite, glowPulse 4s infinite;
+  @apply px-6 py-2 rounded-lg bg-gradient-to-r from-[#ff0080] to-[#7928ca] text-white font-medium 
+         hover:opacity-90 transition-opacity duration-300 inline-block text-center;
 }
 
 .button-secondary {
-  @apply button;
-  background: transparent;
-  border: 2px solid;
-  border-image: var(--secondary-gradient) 1;
-  color: white;
-  position: relative;
-  z-index: 1;
-  animation: hue-rotate 10s infinite linear;
-}
-
-.button-secondary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--secondary-gradient);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.button-secondary:hover::before {
-  opacity: 0.2;
-}
-
-.button-secondary:hover {
-  transform: translateY(-2px);
-  color: white;
+  @apply px-6 py-2 rounded-lg border border-[#ff0080]/20 text-white font-medium 
+         hover:bg-[#ff0080]/10 transition-colors duration-300 inline-block text-center;
 }
 
 .card {
