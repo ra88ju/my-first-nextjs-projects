@@ -4,6 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://urjazeqlytvfftrdlcyt.supabase.co';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function Login() {
   const router = useRouter();
@@ -21,26 +26,24 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      // Here you would typically make an API call to your backend
-      // For demo purposes, we'll simulate a login check
       if (formData.email && formData.password) {
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Add your actual login API call here
-        // const response = await fetch('/api/login', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(formData)
-        // });
-        
-        // For demo, we'll just redirect to home
-        router.push('/');
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data?.user) {
+          router.push('/');
+        }
       } else {
         setError('Please fill in all fields');
       }
-    } catch (err) {
-      setError('Failed to login. Please try again.');
+    } catch (err: any) {
+      setError(err.message || 'Failed to login. Please try again.');
     } finally {
       setIsLoading(false);
     }
