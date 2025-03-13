@@ -11,7 +11,7 @@ export default function About() {
       name: 'MD. ROBIN KAKA',
       role: 'CEO & Founder',
       specialty: 'Backend Developer',
-      image: '👨‍💻',
+      image: '/team/robin.jpg',
       social: {
         facebook: 'https://facebook.com/robinkaka',
         linkedin: 'https://linkedin.com/in/robinkaka'
@@ -22,7 +22,7 @@ export default function About() {
       name: 'MD. SHAJIB ISLAM',
       role: 'software developer',
       specialty: 'Full Stack Developer',
-      image: '👨‍🎨',
+      image: 'C:\Users\WiN10\Downloads\shajib.jpg',
       social: {
         facebook: 'https://facebook.com/shajibislam',
         linkedin: 'https://linkedin.com/in/shajibislam'
@@ -33,7 +33,7 @@ export default function About() {
       name: 'MD. SHAKIL ISLAM',
       role: 'Tech Lead',
       specialty: 'Software Engineer',
-      image: '👨‍🔧',
+      image: '/team/shakil.jpg',
       social: {
         facebook: 'https://facebook.com/shakilislam',
         linkedin: 'https://linkedin.com/in/shakilislam'
@@ -44,7 +44,7 @@ export default function About() {
       name: 'MD. SHAJOR  ISLAM',
       role: 'Marketing Officer ',
       specialty: 'Marketing',
-      image: '👨‍🔧',
+      image: '/team/shajor.jpg',
       social: {
         facebook: 'https://facebook.com/shajorislam',
         linkedin: 'https://linkedin.com/in/shajorislam'
@@ -55,7 +55,7 @@ export default function About() {
       name: 'MD. Mahabubur Rahman',
       role: 'Software Developer',
       specialty: 'Software Developer',
-      image: '👨‍🔧',
+      image: '/team/mahabubur.jpg',
       social: {
         facebook: 'https://facebook.com/mahabuburrahman',
         linkedin: 'https://linkedin.com/in/mahabuburrahman'
@@ -141,7 +141,13 @@ export default function About() {
                       key={member.id}
                       className="card group text-center transform transition-all duration-300 hover:scale-105"
                     >
-                      <div className="text-6xl mb-4">{member.image}</div>
+                      <div className="mb-4 relative w-32 h-32 mx-auto rounded-full overflow-hidden">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
                       <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
                         {member.name}
                       </h3>
