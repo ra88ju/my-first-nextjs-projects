@@ -186,7 +186,7 @@ export default function About() {
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent">
             Popular Tours
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-8">
             {[
               {
                 name: 'Cox\'s Bazar',
@@ -211,24 +211,24 @@ export default function About() {
               }
             ].map((tour, index) => (
               <div key={index} className="card group overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-32 md:h-48 overflow-hidden">
                   <img
                     src={tour.image}
                     alt={tour.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-white text-sm">
+                  <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/50 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-white text-xs md:text-sm">
                     {tour.duration}
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
+                <div className="p-3 md:p-6">
+                  <h3 className="text-sm md:text-xl font-semibold mb-1 md:mb-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
                     {tour.name}
                   </h3>
-                  <p className="text-gray-300 mb-4">{tour.location}</p>
+                  <p className="text-gray-300 text-xs md:text-base mb-2 md:mb-4">{tour.location}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#ff0080] font-bold">{tour.price}</span>
-                    <button className="button-primary px-4 py-2 text-sm">
+                    <span className="text-[#ff0080] font-bold text-xs md:text-base">{tour.price}</span>
+                    <button className="button-primary px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm">
                       Book Now
                     </button>
                   </div>
