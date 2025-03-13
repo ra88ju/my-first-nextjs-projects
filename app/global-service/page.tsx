@@ -18,64 +18,64 @@ export default function GlobalService() {
 
   const services: Service[] = [
     {
-      id: 'web-development',
-      title: 'Global Web Development',
-      description: 'Professional web development services available worldwide, delivering high-quality solutions for businesses of all sizes.',
+      id: 'website-development',
+      title: 'Website Development',
+      description: 'Professional website development services with modern design and cutting-edge technology.',
       icon: '🌐',
       features: [
-        'Custom Website Development',
-        'E-commerce Solutions',
-        'Web Application Development',
-        'Mobile-First Design',
+        'Custom Website Design',
+        'Responsive Layout',
+        'E-commerce Integration',
+        'Content Management System',
         'SEO Optimization'
       ],
-      regions: ['North America', 'Europe', 'Asia', 'Australia', 'Africa'],
-      pricing: 'Starting from $1,000'
+      regions: ['Bangladesh', 'International Clients', 'Remote Support'],
+      pricing: 'Starting from $500'
     },
     {
-      id: 'digital-marketing',
-      title: 'International Digital Marketing',
-      description: 'Comprehensive digital marketing services tailored for global markets, helping businesses reach international audiences.',
-      icon: '📱',
+      id: 'web-applications',
+      title: 'Web Applications',
+      description: 'Custom web applications built with the latest technologies and best practices.',
+      icon: '💻',
       features: [
-        'Social Media Management',
-        'Content Marketing',
-        'Email Marketing',
-        'PPC Advertising',
-        'Analytics & Reporting'
+        'Custom Web Apps',
+        'API Development',
+        'Database Integration',
+        'User Authentication',
+        'Real-time Features'
       ],
-      regions: ['Global Coverage', 'Local Market Expertise', 'Multi-language Support'],
-      pricing: 'Custom packages available'
+      regions: ['Global Service', '24/7 Support', 'Cloud Hosting'],
+      pricing: 'Custom pricing based on requirements'
     },
     {
-      id: 'cloud-solutions',
-      title: 'Cloud Computing Solutions',
-      description: 'Enterprise-grade cloud solutions with global infrastructure and 24/7 support.',
-      icon: '☁️',
+      id: 'e-commerce',
+      title: 'E-commerce Solutions',
+      description: 'Complete e-commerce solutions to help businesses sell online effectively.',
+      icon: '🛍️',
       features: [
-        'Cloud Migration',
-        'Server Management',
-        'Data Backup',
-        'Security Solutions',
-        'Performance Optimization'
+        'Online Store Setup',
+        'Payment Integration',
+        'Inventory Management',
+        'Order Processing',
+        'Analytics Dashboard'
       ],
-      regions: ['Global Data Centers', 'Local Support Teams', 'Worldwide Network'],
-      pricing: 'Based on usage and requirements'
+      regions: ['Bangladesh', 'International Markets', 'Multi-currency Support'],
+      pricing: 'Starting from $800'
     },
     {
-      id: 'consulting',
-      title: 'Global IT Consulting',
-      description: 'Expert IT consulting services helping businesses navigate digital transformation on a global scale.',
-      icon: '💡',
+      id: 'maintenance',
+      title: 'Website Maintenance',
+      description: 'Regular maintenance and support services to keep your website running smoothly.',
+      icon: '🔧',
       features: [
-        'Digital Strategy',
-        'Technology Assessment',
-        'Process Optimization',
-        'Security Audits',
-        'Training & Support'
+        'Regular Updates',
+        'Security Monitoring',
+        'Performance Optimization',
+        'Backup & Recovery',
+        'Technical Support'
       ],
-      regions: ['Worldwide Coverage', 'Local Expertise', 'International Standards'],
-      pricing: 'Project-based pricing'
+      regions: ['24/7 Support', 'Emergency Response', 'Regular Maintenance'],
+      pricing: 'Monthly packages available'
     }
   ];
 
