@@ -739,6 +739,29 @@ export default function Home() {
         </div>
       )}
 
+      {/* Global Service Section */}
+      <section className="section py-20">
+        <div className="container">
+          <div className="card group text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent">
+              Our Global Services
+            </h2>
+            <p className="text-gray-300 mb-8 text-lg">
+              Experience our comprehensive range of services available worldwide. We bring quality and innovation to every corner of the globe.
+            </p>
+            <Link 
+              href="/global-service" 
+              className="button-primary inline-flex items-center gap-2 text-lg px-8 py-4"
+            >
+              Explore Global Services
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#ff0080]/10 via-[#7928ca]/10 to-[#0061ff]/10 animate-gradient"></div>
