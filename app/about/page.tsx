@@ -179,6 +179,65 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Popular Tours Section */}
+      <section className="section mt-20">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent">
+            Popular Tours
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Cox\'s Bazar',
+                location: 'Bangladesh',
+                price: '$299',
+                image: '/tours/coxs-bazar.jpg',
+                duration: '3 Days'
+              },
+              {
+                name: 'Sundarbans',
+                location: 'Bangladesh',
+                price: '$399',
+                image: '/tours/sundarbans.jpg',
+                duration: '4 Days'
+              },
+              {
+                name: 'Sajek Valley',
+                location: 'Bangladesh',
+                price: '$249',
+                image: '/tours/sajek.jpg',
+                duration: '2 Days'
+              }
+            ].map((tour, index) => (
+              <div key={index} className="card group overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={tour.image}
+                    alt={tour.name}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-white text-sm">
+                    {tour.duration}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
+                    {tour.name}
+                  </h3>
+                  <p className="text-gray-300 mb-4">{tour.location}</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#ff0080] font-bold">{tour.price}</span>
+                    <button className="button-primary px-4 py-2 text-sm">
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 } 
