@@ -22,7 +22,7 @@ export default function About() {
       name: 'MD. SHAJIB ISLAM',
       role: 'software developer',
       specialty: 'Full Stack Developer',
-      image: 'C:\Users\WiN10\Downloads\shajib.jpg',
+      image: '/team/shajib.jpg',
       social: {
         facebook: 'https://facebook.com/shajibislam',
         linkedin: 'https://linkedin.com/in/shajibislam'
