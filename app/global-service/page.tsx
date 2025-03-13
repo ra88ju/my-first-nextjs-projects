@@ -18,64 +18,64 @@ export default function GlobalService() {
 
   const services: Service[] = [
     {
-      id: 'website-development',
-      title: 'Website Development',
-      description: 'Professional website development services with modern design and cutting-edge technology.',
-      icon: '🌐',
+      id: 'portfolio-website',
+      title: 'Portfolio Website',
+      description: 'A modern portfolio website built with Next.js, showcasing projects and skills with beautiful animations.',
+      icon: '🎨',
       features: [
-        'Custom Website Design',
-        'Responsive Layout',
-        'E-commerce Integration',
-        'Content Management System',
-        'SEO Optimization'
+        'Next.js 14',
+        'Tailwind CSS',
+        'Responsive Design',
+        'Dark Mode',
+        'Project Showcase'
       ],
-      regions: ['Bangladesh', 'International Clients', 'Remote Support'],
-      pricing: 'Starting from $500'
+      regions: ['Personal Portfolio', 'Project Display', 'Contact Form'],
+      pricing: 'View Live Demo'
     },
     {
-      id: 'web-applications',
-      title: 'Web Applications',
-      description: 'Custom web applications built with the latest technologies and best practices.',
-      icon: '💻',
-      features: [
-        'Custom Web Apps',
-        'API Development',
-        'Database Integration',
-        'User Authentication',
-        'Real-time Features'
-      ],
-      regions: ['Global Service', '24/7 Support', 'Cloud Hosting'],
-      pricing: 'Custom pricing based on requirements'
-    },
-    {
-      id: 'e-commerce',
-      title: 'E-commerce Solutions',
-      description: 'Complete e-commerce solutions to help businesses sell online effectively.',
+      id: 'ecommerce-platform',
+      title: 'E-commerce Platform',
+      description: 'Full-featured e-commerce platform with product management, cart system, and secure checkout.',
       icon: '🛍️',
       features: [
-        'Online Store Setup',
-        'Payment Integration',
-        'Inventory Management',
-        'Order Processing',
-        'Analytics Dashboard'
+        'Product Catalog',
+        'Shopping Cart',
+        'User Authentication',
+        'Order Management',
+        'Admin Dashboard'
       ],
-      regions: ['Bangladesh', 'International Markets', 'Multi-currency Support'],
-      pricing: 'Starting from $800'
+      regions: ['Online Store', 'Admin Panel', 'Customer Portal'],
+      pricing: 'View Live Demo'
     },
     {
-      id: 'maintenance',
-      title: 'Website Maintenance',
-      description: 'Regular maintenance and support services to keep your website running smoothly.',
-      icon: '🔧',
+      id: 'blog-platform',
+      title: 'Blog Platform',
+      description: 'Modern blog platform with content management, comments, and social sharing features.',
+      icon: '📝',
       features: [
-        'Regular Updates',
-        'Security Monitoring',
-        'Performance Optimization',
-        'Backup & Recovery',
-        'Technical Support'
+        'Blog Posts',
+        'Categories',
+        'Comments System',
+        'Rich Text Editor',
+        'Social Sharing'
       ],
-      regions: ['24/7 Support', 'Emergency Response', 'Regular Maintenance'],
-      pricing: 'Monthly packages available'
+      regions: ['Content Management', 'User Engagement', 'SEO Friendly'],
+      pricing: 'View Live Demo'
+    },
+    {
+      id: 'dashboard-app',
+      title: 'Admin Dashboard',
+      description: 'Comprehensive admin dashboard for managing users, content, and analytics.',
+      icon: '📊',
+      features: [
+        'User Management',
+        'Analytics Dashboard',
+        'Content Editor',
+        'Settings Panel',
+        'Activity Logs'
+      ],
+      regions: ['Admin Control', 'Data Analytics', 'System Management'],
+      pricing: 'View Live Demo'
     }
   ];
 
