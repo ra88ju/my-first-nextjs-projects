@@ -116,6 +116,52 @@ export default function About() {
               </div>
             </div>
 
+            {/* Who We Are Section */}
+            <div className="card group mt-12">
+              <h3 className="text-2xl font-semibold bg-gradient-to-r from-[#ff0080] via-[#7928ca] to-[#0061ff] bg-clip-text text-transparent mb-6 text-center">
+                Who We Are
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <p className="text-gray-300">
+                    SolutionBD is a leading technology company based in Bangladesh, specializing in innovative digital solutions. Our team of experts combines creativity with technical excellence to deliver exceptional results.
+                  </p>
+                  <p className="text-gray-300">
+                    With years of experience in the industry, we've helped numerous businesses transform their digital presence and achieve their goals through cutting-edge technology solutions.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#ff0080] to-[#7928ca] flex items-center justify-center text-white text-xl font-bold">
+                      5+
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white">Years Experience</h4>
+                      <p className="text-gray-300">In the industry</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#7928ca] to-[#0061ff] flex items-center justify-center text-white text-xl font-bold">
+                      100+
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white">Projects Completed</h4>
+                      <p className="text-gray-300">Successfully delivered</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#0061ff] to-[#ff0080] flex items-center justify-center text-white text-xl font-bold">
+                      50+
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white">Happy Clients</h4>
+                      <p className="text-gray-300">Satisfied customers</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Meet Our Team Button */}
             <div className="text-center mt-12">
               <button
