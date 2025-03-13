@@ -18,64 +18,64 @@ export default function GlobalService() {
 
   const services: Service[] = [
     {
-      id: 'portfolio-website',
-      title: 'Portfolio Website',
-      description: 'A modern portfolio website built with Next.js, showcasing projects and skills with beautiful animations.',
+      id: 'nextjs-portfolio',
+      title: 'Next.js Portfolio',
+      description: 'A modern portfolio website showcasing my projects, skills, and experience built with Next.js 14 and Tailwind CSS.',
       icon: '🎨',
       features: [
-        'Next.js 14',
-        'Tailwind CSS',
+        'Next.js 14 App Router',
+        'Tailwind CSS Styling',
         'Responsive Design',
-        'Dark Mode',
+        'Dark/Light Mode',
         'Project Showcase'
       ],
-      regions: ['Personal Portfolio', 'Project Display', 'Contact Form'],
-      pricing: 'View Live Demo'
+      regions: ['Portfolio', 'Projects', 'Contact'],
+      pricing: 'View Demo'
     },
     {
-      id: 'ecommerce-platform',
-      title: 'E-commerce Platform',
-      description: 'Full-featured e-commerce platform with product management, cart system, and secure checkout.',
-      icon: '🛍️',
-      features: [
-        'Product Catalog',
-        'Shopping Cart',
-        'User Authentication',
-        'Order Management',
-        'Admin Dashboard'
-      ],
-      regions: ['Online Store', 'Admin Panel', 'Customer Portal'],
-      pricing: 'View Live Demo'
-    },
-    {
-      id: 'blog-platform',
-      title: 'Blog Platform',
-      description: 'Modern blog platform with content management, comments, and social sharing features.',
+      id: 'nextjs-blog',
+      title: 'Next.js Blog',
+      description: 'A full-featured blog platform with markdown support, categories, and comments system.',
       icon: '📝',
       features: [
-        'Blog Posts',
-        'Categories',
-        'Comments System',
-        'Rich Text Editor',
-        'Social Sharing'
+        'Markdown Support',
+        'Category System',
+        'Comments',
+        'Search Function',
+        'SEO Optimized'
       ],
-      regions: ['Content Management', 'User Engagement', 'SEO Friendly'],
-      pricing: 'View Live Demo'
+      regions: ['Blog Posts', 'Categories', 'Comments'],
+      pricing: 'View Demo'
     },
     {
-      id: 'dashboard-app',
-      title: 'Admin Dashboard',
-      description: 'Comprehensive admin dashboard for managing users, content, and analytics.',
+      id: 'nextjs-dashboard',
+      title: 'Next.js Dashboard',
+      description: 'An admin dashboard with user management, analytics, and content management system.',
       icon: '📊',
       features: [
         'User Management',
-        'Analytics Dashboard',
+        'Analytics',
         'Content Editor',
         'Settings Panel',
         'Activity Logs'
       ],
-      regions: ['Admin Control', 'Data Analytics', 'System Management'],
-      pricing: 'View Live Demo'
+      regions: ['Admin Panel', 'Analytics', 'Management'],
+      pricing: 'View Demo'
+    },
+    {
+      id: 'nextjs-ecommerce',
+      title: 'Next.js E-commerce',
+      description: 'A complete e-commerce solution with product management, cart system, and checkout process.',
+      icon: '🛍️',
+      features: [
+        'Product Catalog',
+        'Shopping Cart',
+        'User Auth',
+        'Order System',
+        'Admin Panel'
+      ],
+      regions: ['Store', 'Products', 'Orders'],
+      pricing: 'View Demo'
     }
   ];
 
@@ -135,8 +135,14 @@ export default function GlobalService() {
                   <div className="pt-4 border-t border-purple-500/20">
                     <div className="flex justify-between items-center">
                       <span className="text-purple-400">{service.pricing}</span>
-                      <button className="button-primary px-4 py-2 text-sm">
-                        Learn More
+                      <button 
+                        className="button-primary px-4 py-2 text-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(`/demo/${service.id}`, '_blank');
+                        }}
+                      >
+                        View Demo
                       </button>
                     </div>
                   </div>
