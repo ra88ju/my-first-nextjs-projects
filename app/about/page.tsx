@@ -31,7 +31,7 @@ export default function About() {
     {
       id: 3,
       name: 'MD. SHAKIL ISLAM',
-      role: 'Tech Lead',
+      role: 'Developer',
       specialty: 'Software Engineer',
       image: '/team/shakil.jpg',
       social: {
