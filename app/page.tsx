@@ -5,15 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import './styles/page.css';
 
-interface FeatureDetails {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  benefits: string[];
-  services: string[];
-  pricing?: string;
-}
 
 interface TourPoint {
   id: string;
