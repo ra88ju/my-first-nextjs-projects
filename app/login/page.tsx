@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://urjazeqlytvfftrdlcyt.supabase.co';
