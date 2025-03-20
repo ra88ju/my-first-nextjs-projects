@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import './styles/page.css';
@@ -12,7 +12,7 @@ interface TourPoint {
   description: string;
   icon: string;
   location: string;
-  rating: number;
+  rating: string;
   entry: string;
   images: string[];
   facilities: string[];
@@ -20,10 +20,295 @@ interface TourPoint {
   tips: string[];
 }
 
+interface FeatureDetails {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  benefits: string[];
+  services: string[];
+  pricing?: string;
+}
+
 export default function Home() {
   const [selectedFeature, setSelectedFeature] = useState<FeatureDetails | null>(null);
   const [selectedTourPoint, setSelectedTourPoint] = useState<TourPoint | null>(null);
+ 
+  const tourPoints: TourPoint[] = [
+    {
+      id: 'lalbagh',
+      title: 'Lalbagh Fort',
+      description: 'A magnificent 17th-century Mughal fort with beautiful gardens and stunning architecture.',
+      icon: '🏰',
+      location: 'Old Dhaka',
+      rating: '4.8',
+      entry: '$5',
+      images: [
+        'Fort Front View',
+        'Garden Area',
+        'Museum Section',
+        'Water Features'
+      ],
+      facilities: [
+        'Guided Tours',
+        'Museum',
+        'Prayer Room',
+        'Rest Areas',
+        'Souvenir Shop'
+      ],
+      bestTime: '9:00 AM - 11:00 AM',
+      tips: [
+        'Visit early morning to avoid crowds',
+        'Bring a camera for amazing photos',
+        'Wear comfortable walking shoes',
+        'Plan at least 2-3 hours for visit',
+        'Book a guide for historical insights'
+      ]
+    },
+    {
+      id: 'ahsan-manzil',
+      title: 'Ahsan Manzil',
+      description: 'The Pink Palace of Dhaka, a stunning historical mansion showcasing Bengali architecture and royal heritage.',
+      icon: '🏛️',
+      location: 'Old Dhaka',
+      rating: '4.7',
+      entry: '$4',
+      images: [
+        'Palace Front',
+        'Dome View',
+        'Royal Hall',
+        'River View'
+      ],
+      facilities: [
+        'Museum Tours',
+        'Photo Gallery',
+        'Historical Exhibits',
+        'Rest Areas',
+        'Gift Shop'
+      ],
+      bestTime: '10:00 AM - 2:00 PM',
+      tips: [
+        'Visit during weekdays',
+        'Take guided historical tour',
+        'Photography allowed',
+        'Explore nearby markets',
+        'Check special exhibitions'
+      ]
+    },
+    {
+      id: 'hatirjheel',
+      title: 'Hatirjheel',
+      description: 'Modern urban development featuring beautiful lakeside views, bridges, and recreational areas.',
+      icon: '🌉',
+      location: 'Dhaka City',
+      rating: '4.6',
+      entry: 'Free',
+      images: [
+        'Lake View',
+        'Bridge Lights',
+        'Walking Trails',
+        'Night Scene'
+      ],
+      facilities: [
+        'Walking Paths',
+        'Viewing Decks',
+        'Food Stalls',
+        'Boat Rides',
+        'Children\'s Area'
+      ],
+      bestTime: '5:00 PM - 9:00 PM',
+      tips: [
+        'Best views at sunset',
+        'Try evening boat ride',
+        'Visit illuminated bridges',
+        'Enjoy street food',
+        'Perfect for photography'
+      ]
+    },
+    {
+      id: 'botanical',
+      title: 'National Botanical Garden',
+      description: 'A vast botanical garden featuring diverse plant species and peaceful natural surroundings.',
+      icon: '🌳',
+      location: 'Mirpur',
+      rating: '4.7',
+      entry: '$2',
+      images: [
+        'Garden Overview',
+        'Rare Plants Section',
+        'Lake View',
+        'Butterfly Garden'
+      ],
+      facilities: [
+        'Walking Trails',
+        'Rest Areas',
+        'Plant Nursery',
+        'Information Center',
+        'Picnic Spots'
+      ],
+      bestTime: '3:00 PM - 5:00 PM',
+      tips: [
+        'Best visited during spring',
+        'Bring water and snacks',
+        'Join guided botanical tours',
+        'Visit butterfly garden',
+        'Check special exhibitions'
+      ]
+    },
+    {
+      id: 'national-parliament',
+      title: 'National Parliament House',
+      description: 'Iconic architectural masterpiece designed by Louis Kahn, symbolizing Bangladesh\'s democracy.',
+      icon: '🏛️',
+      location: 'Sher-e-Bangla Nagar',
+      rating: '4.9',
+      entry: '$6',
+      images: [
+        'Building Exterior',
+        'Lake View',
+        'Assembly Hall',
+        'Gardens'
+      ],
+      facilities: [
+        'Guided Tours',
+        'Photo Points',
+        'Information Center',
+        'Security Check',
+        'Gardens'
+      ],
+      bestTime: '9:00 AM - 1:00 PM',
+      tips: [
+        'Book tour in advance',
+        'Bring ID for entry',
+        'Photography restrictions apply',
+        'Visit during session breaks',
+        'Check weather forecast'
+      ]
+    },
+    {
+      id: 'dhanmondi',
+      title: 'Dhanmondi Lake',
+      description: 'A popular recreational area with a large lake and various entertainment facilities.',
+      icon: '🌊',
+      location: 'Dhanmondi',
+      rating: '4.5',
+      entry: 'Free',
+      images: [
+        'Lake View',
+        'Walking Track',
+        'Amphitheater',
+        'Sunset Point'
+      ],
+      facilities: [
+        'Walking Track',
+        'Exercise Zone',
+        'Food Court',
+        'Boat Rides',
+        'Amphitheater'
+      ],
+      bestTime: '4:00 PM - 6:00 PM',
+      tips: [
+        'Perfect for evening walks',
+        'Great sunset viewing spot',
+        'Visit food courts',
+        'Try boat riding',
+        'Attend cultural events'
+      ]
+    },
+    {
+      id: 'liberation-museum',
+      title: 'Liberation War Museum',
+      description: 'Museum dedicated to Bangladesh\'s struggle for independence, featuring historical artifacts and exhibits.',
+      icon: '🏛️',
+      location: 'Agargaon',
+      rating: '4.8',
+      entry: '$3',
+      images: [
+        'Museum Front',
+        'War Exhibits',
+        'Memorial Wall',
+        'Document Gallery'
+      ],
+      facilities: [
+        'Guided Tours',
+        'Audio Guide',
+        'Library',
+        'Memorial Hall',
+        'Documentary Theater'
+      ],
+      bestTime: '11:00 AM - 3:00 PM',
+      tips: [
+        'Allow 2-3 hours for visit',
+        'Join guided tour',
+        'Photography permitted',
+        'Visit memorial wall',
+        'Check special exhibitions'
+      ]
+    },
+    {
+      id: 'ramna-park',
+      title: 'Ramna Park',
+      description: 'Historic urban park with century-old trees, walking paths, and cultural significance.',
+      icon: '🌿',
+      location: 'Ramna',
+      rating: '4.4',
+      entry: 'Free',
+      images: [
+        'Park Overview',
+        'Ancient Trees',
+        'Walking Paths',
+        'Cultural Events'
+      ],
+      facilities: [
+        'Walking Trails',
+        'Exercise Areas',
+        'Rest Spots',
+        'Event Space',
+        'Garden Areas'
+      ],
+      bestTime: '7:00 AM - 9:00 AM',
+      tips: [
+        'Best for morning walks',
+        'Visit during festivals',
+        'Enjoy morning exercise',
+        'Bird watching spot',
+        'Cultural performances'
+      ]
+    },
+    {
+      id: 'star-mosque',
+      title: 'Star Mosque',
+      description: 'Beautiful mosque known for its stunning star-patterned architecture and intricate tile work.',
+      icon: '🕌',
+      location: 'Old Dhaka',
+      rating: '4.7',
+      entry: 'Free',
+      images: [
+        'Mosque Front',
+        'Star Patterns',
+        'Interior Design',
+        'Prayer Hall'
+      ],
+      facilities: [
+        'Prayer Areas',
+        'Ablution Space',
+        'Rest Areas',
+        'Information Desk',
+        'Guided Tours'
+      ],
+      bestTime: '8:00 AM - 12:00 PM',
+      tips: [
+        'Respect prayer times',
+        'Dress modestly',
+        'Remove shoes before entry',
+        'Photography with permission',
+        'Visit during off-peak hours'
+      ]
+    }
+  ];
 
+ 
+ 
   const features: FeatureDetails[] = [
     {
       id: 'market',
@@ -216,278 +501,9 @@ export default function Home() {
     }
   ];
 
-  const tourPoints: TourPoint[] = [
-    {
-      id: 'lalbagh',
-      title: 'Lalbagh Fort',
-      description: 'A magnificent 17th-century Mughal fort with beautiful gardens and stunning architecture.',
-      icon: '🏰',
-      location: 'Old Dhaka',
-      rating: 4.8,
-      entry: '$5',
-      images: [
-        'Fort Front View',
-        'Garden Area',
-        'Museum Section',
-        'Water Features'
-      ],
-      facilities: [
-        'Guided Tours',
-        'Museum',
-        'Prayer Room',
-        'Rest Areas',
-        'Souvenir Shop'
-      ],
-      bestTime: '9:00 AM - 11:00 AM',
-      tips: [
-        'Visit early morning to avoid crowds',
-        'Bring a camera for amazing photos',
-        'Wear comfortable walking shoes',
-        'Plan at least 2-3 hours for visit',
-        'Book a guide for historical insights'
-      ]
-    },
-    {
-      id: 'ahsan-manzil',
-      title: 'Ahsan Manzil',
-      description: 'The Pink Palace of Dhaka, a stunning historical mansion showcasing Bengali architecture and royal heritage.',
-      icon: '🏛️',
-      location: 'Old Dhaka',
-      rating: 4.7,
-      entry: '$4',
-      images: [
-        'Palace Front',
-        'Dome View',
-        'Royal Hall',
-        'River View'
-      ],
-      facilities: [
-        'Museum Tours',
-        'Photo Gallery',
-        'Historical Exhibits',
-        'Rest Areas',
-        'Gift Shop'
-      ],
-      bestTime: '10:00 AM - 2:00 PM',
-      tips: [
-        'Visit during weekdays',
-        'Take guided historical tour',
-        'Photography allowed',
-        'Explore nearby markets',
-        'Check special exhibitions'
-      ]
-    },
-    {
-      id: 'hatirjheel',
-      title: 'Hatirjheel',
-      description: 'Modern urban development featuring beautiful lakeside views, bridges, and recreational areas.',
-      icon: '🌉',
-      location: 'Dhaka City',
-      rating: 4.6,
-      entry: 'Free',
-      images: [
-        'Lake View',
-        'Bridge Lights',
-        'Walking Trails',
-        'Night Scene'
-      ],
-      facilities: [
-        'Walking Paths',
-        'Viewing Decks',
-        'Food Stalls',
-        'Boat Rides',
-        'Children\'s Area'
-      ],
-      bestTime: '5:00 PM - 9:00 PM',
-      tips: [
-        'Best views at sunset',
-        'Try evening boat ride',
-        'Visit illuminated bridges',
-        'Enjoy street food',
-        'Perfect for photography'
-      ]
-    },
-    {
-      id: 'botanical',
-      title: 'National Botanical Garden',
-      description: 'A vast botanical garden featuring diverse plant species and peaceful natural surroundings.',
-      icon: '🌳',
-      location: 'Mirpur',
-      rating: 4.7,
-      entry: '$2',
-      images: [
-        'Garden Overview',
-        'Rare Plants Section',
-        'Lake View',
-        'Butterfly Garden'
-      ],
-      facilities: [
-        'Walking Trails',
-        'Rest Areas',
-        'Plant Nursery',
-        'Information Center',
-        'Picnic Spots'
-      ],
-      bestTime: '3:00 PM - 5:00 PM',
-      tips: [
-        'Best visited during spring',
-        'Bring water and snacks',
-        'Join guided botanical tours',
-        'Visit butterfly garden',
-        'Check special exhibitions'
-      ]
-    },
-    {
-      id: 'national-parliament',
-      title: 'National Parliament House',
-      description: 'Iconic architectural masterpiece designed by Louis Kahn, symbolizing Bangladesh\'s democracy.',
-      icon: '🏛️',
-      location: 'Sher-e-Bangla Nagar',
-      rating: 4.9,
-      entry: '$6',
-      images: [
-        'Building Exterior',
-        'Lake View',
-        'Assembly Hall',
-        'Gardens'
-      ],
-      facilities: [
-        'Guided Tours',
-        'Photo Points',
-        'Information Center',
-        'Security Check',
-        'Gardens'
-      ],
-      bestTime: '9:00 AM - 1:00 PM',
-      tips: [
-        'Book tour in advance',
-        'Bring ID for entry',
-        'Photography restrictions apply',
-        'Visit during session breaks',
-        'Check weather forecast'
-      ]
-    },
-    {
-      id: 'dhanmondi',
-      title: 'Dhanmondi Lake',
-      description: 'A popular recreational area with a large lake and various entertainment facilities.',
-      icon: '🌊',
-      location: 'Dhanmondi',
-      rating: 4.5,
-      entry: 'Free',
-      images: [
-        'Lake View',
-        'Walking Track',
-        'Amphitheater',
-        'Sunset Point'
-      ],
-      facilities: [
-        'Walking Track',
-        'Exercise Zone',
-        'Food Court',
-        'Boat Rides',
-        'Amphitheater'
-      ],
-      bestTime: '4:00 PM - 6:00 PM',
-      tips: [
-        'Perfect for evening walks',
-        'Great sunset viewing spot',
-        'Visit food courts',
-        'Try boat riding',
-        'Attend cultural events'
-      ]
-    },
-    {
-      id: 'liberation-museum',
-      title: 'Liberation War Museum',
-      description: 'Museum dedicated to Bangladesh\'s struggle for independence, featuring historical artifacts and exhibits.',
-      icon: '🏛️',
-      location: 'Agargaon',
-      rating: 4.8,
-      entry: '$3',
-      images: [
-        'Museum Front',
-        'War Exhibits',
-        'Memorial Wall',
-        'Document Gallery'
-      ],
-      facilities: [
-        'Guided Tours',
-        'Audio Guide',
-        'Library',
-        'Memorial Hall',
-        'Documentary Theater'
-      ],
-      bestTime: '11:00 AM - 3:00 PM',
-      tips: [
-        'Allow 2-3 hours for visit',
-        'Join guided tour',
-        'Photography permitted',
-        'Visit memorial wall',
-        'Check special exhibitions'
-      ]
-    },
-    {
-      id: 'ramna-park',
-      title: 'Ramna Park',
-      description: 'Historic urban park with century-old trees, walking paths, and cultural significance.',
-      icon: '🌿',
-      location: 'Ramna',
-      rating: 4.4,
-      entry: 'Free',
-      images: [
-        'Park Overview',
-        'Ancient Trees',
-        'Walking Paths',
-        'Cultural Events'
-      ],
-      facilities: [
-        'Walking Trails',
-        'Exercise Areas',
-        'Rest Spots',
-        'Event Space',
-        'Garden Areas'
-      ],
-      bestTime: '7:00 AM - 9:00 AM',
-      tips: [
-        'Best for morning walks',
-        'Visit during festivals',
-        'Enjoy morning exercise',
-        'Bird watching spot',
-        'Cultural performances'
-      ]
-    },
-    {
-      id: 'star-mosque',
-      title: 'Star Mosque',
-      description: 'Beautiful mosque known for its stunning star-patterned architecture and intricate tile work.',
-      icon: '🕌',
-      location: 'Old Dhaka',
-      rating: 4.7,
-      entry: 'Free',
-      images: [
-        'Mosque Front',
-        'Star Patterns',
-        'Interior Design',
-        'Prayer Hall'
-      ],
-      facilities: [
-        'Prayer Areas',
-        'Ablution Space',
-        'Rest Areas',
-        'Information Desk',
-        'Guided Tours'
-      ],
-      bestTime: '8:00 AM - 12:00 PM',
-      tips: [
-        'Respect prayer times',
-        'Dress modestly',
-        'Remove shoes before entry',
-        'Photography with permission',
-        'Visit during off-peak hours'
-      ]
-    }
-  ];
+  const handleTourPointSelection = (point: { id: Key; icon: ReactNode; title: string; description: string; location: string; rating: string; entry: string; }): void => {
+    throw new Error('Function not implemented.');
+  };
 
   return (
     <div className="animate-fade-in">
@@ -545,11 +561,19 @@ export default function Home() {
             Popular Tour Points
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {tourPoints.map((point) => (
+            {tourPoints?.map((point: {
+              id: Key;
+              icon: ReactNode;
+              title: string;
+              description: string;
+              location: string;
+              rating: string;
+              entry: string;
+            }) => (
               <div
                 key={point.id}
                 className="card group cursor-pointer transform transition-all duration-300 hover:scale-105"
-                onClick={() => setSelectedTourPoint(point)}
+                onClick={() => handleTourPointSelection(point)}
               >
                 <div className="text-4xl mb-4">{point.icon}</div>
                 <h3 className="text-xl font-semibold bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent mb-4">
@@ -586,14 +610,14 @@ export default function Home() {
           <div className="bg-gradient-to-b from-purple-900/90 to-black/90 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto border border-purple-500/20">
             <div className="flex justify-between items-start mb-6">
               <div className="flex items-center">
-                <span className="text-4xl mr-4">{selectedTourPoint.icon}</span>
+                <span className="text-4xl mr-4">{selectedTourPoint?.icon}</span>
                 <div>
                   <h2 className="text-2xl font-bold bg-gradient-to-r from-[#ff0080] to-[#7928ca] bg-clip-text text-transparent">
-                    {selectedTourPoint.title}
+                    {selectedTourPoint?.title}
                   </h2>
                   <div className="flex items-center mt-2">
-                    <span className="text-purple-400 mr-4">{selectedTourPoint.location}</span>
-                    <span className="text-yellow-400">★ {selectedTourPoint.rating}</span>
+                    <span className="text-purple-400 mr-4">{selectedTourPoint?.location}</span>
+                    <span className="text-yellow-400">★ {selectedTourPoint?.rating}</span>
                   </div>
                 </div>
               </div>
@@ -607,7 +631,7 @@ export default function Home() {
 
             <div className="space-y-6">
               <p className="text-gray-300 leading-relaxed">
-                {selectedTourPoint.description}
+                {selectedTourPoint?.description}
               </p>
 
               <div>
@@ -615,7 +639,7 @@ export default function Home() {
                   Available Facilities
                 </h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {selectedTourPoint.facilities.map((facility, index) => (
+                  {selectedTourPoint?.facilities?.map((facility, index) => (
                     <li key={index} className="flex items-center text-gray-300">
                       <span className="text-purple-400 mr-2">✓</span>
                       {facility}
@@ -629,7 +653,7 @@ export default function Home() {
                   Visitor Tips
                 </h3>
                 <ul className="grid grid-cols-1 gap-3">
-                  {selectedTourPoint.tips.map((tip, index) => (
+                  {selectedTourPoint?.tips?.map((tip: string, index: number) => (
                     <li key={index} className="flex items-center text-gray-300">
                       <span className="text-purple-400 mr-2">•</span>
                       {tip}
@@ -642,10 +666,10 @@ export default function Home() {
                 <div className="flex justify-between items-center">
                   <div>
                     <span className="text-purple-400 block">Best Time to Visit</span>
-                    <span className="text-gray-300">{selectedTourPoint.bestTime}</span>
+                    <span className="text-gray-300">{selectedTourPoint?.bestTime}</span>
                   </div>
                   <Link
-                    href={`/toure point/${selectedTourPoint.id}`}
+                    href={`/toure point/${selectedTourPoint?.id}`}
                     className="px-6 py-2 bg-gradient-to-r from-[#ff0080] to-[#7928ca] text-white rounded-lg hover:opacity-90 transition-opacity"
                   >
                     Book Tour
